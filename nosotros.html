@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosotros | El Refugio de Leo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, .serif {
+      font-family: 'Lora', serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20">
+        <div class="flex items-center">
+          <a href="index.html" class="flex items-center space-x-3">
+            <img
+              src="https://storage.googleapis.com/static-files-prod/ai-studio/893a743b-28f0-4d43-9844-0c5a08db1c49.png"
+              alt="El Refugio de Leo Logo Small"
+              class="w-10 h-10 object-contain"
+            />
+            <span class="text-xl font-bold text-slate-700 tracking-tight hidden sm:block">
+              El Refugio <span class="text-lime-600">de Leo</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Inicio</a>
+          <a href="perros.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Perros</a>
+          <a href="gatos.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Gatos</a>
+          <a href="finales-felices.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Finales Felices</a>
+          <a href="nosotros.html" class="px-4 py-2 rounded-lg text-sm font-medium text-lime-700 bg-lime-50">Nosotros</a>
+          <a href="colabora.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Colabora</a>
+          <a href="contacto.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Contacto</a>
+          <a href="colabora.html" class="ml-4 px-5 py-2.5 bg-lime-600 text-white rounded-full text-sm font-semibold hover:bg-lime-700 transition-all shadow-md shadow-lime-100">
+            Donar Ahora
+          </a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle" class="text-slate-500 hover:text-lime-600 focus:outline-none p-2" aria-label="Abrir menú">
+            <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden bg-white border-b border-slate-100 hidden">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Inicio</a>
+        <a href="perros.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Perros</a>
+        <a href="gatos.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Gatos</a>
+        <a href="finales-felices.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Finales Felices</a>
+        <a href="nosotros.html" class="block px-4 py-3 rounded-lg text-base font-medium text-lime-600 bg-lime-50">Nosotros</a>
+        <a href="colabora.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Colabora</a>
+        <a href="contacto.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Contacto</a>
+        <div class="pt-4">
+          <a href="colabora.html" class="block w-full text-center px-4 py-3 bg-lime-600 text-white rounded-xl font-bold">Colabora con nosotros</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow pt-20">
+    <div class="space-y-20 pb-20">
+      <section class="bg-lime-600 py-24 text-white relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center relative z-10">
+          <h1 class="text-5xl md:text-7xl font-bold mb-8">Nuestra Historia</h1>
+          <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto opacity-90">
+            Todo empezó con Leo, un pequeño cachorro rescatado de una cuneta en 2012. Él nos enseñó el valor de la lealtad y nos dio el propósito para crear este refugio.
+          </p>
+        </div>
+        <img
+          src="https://storage.googleapis.com/static-files-prod/ai-studio/f809971a-28e4-4df1-8da6-f94d9b4c0628.png"
+          class="absolute -right-20 -bottom-20 w-96 h-96 opacity-10 pointer-events-none"
+          alt="Brand Decoration"
+        />
+      </section>
+
+      <section class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-16 items-center">
+          <div class="flex-1 space-y-6">
+            <h2 class="text-4xl font-bold text-slate-800">Un refugio, un hogar</h2>
+            <p class="text-lg text-slate-600 leading-relaxed">
+              El Refugio de Leo no es solo un lugar de paso. Trabajamos incansablemente para rehabilitar física y emocionalmente a animales que han sufrido maltrato o abandono.
+            </p>
+            <p class="text-lg text-slate-600 leading-relaxed">
+              Nuestro equipo está formado por veterinarios, etólogos y voluntarios apasionados que garantizan que cada animal reciba los cuidados que se merece mientras espera a su familia definitiva.
+            </p>
+            <div class="grid grid-cols-2 gap-4 pt-4">
+              <div class="p-4 bg-lime-50 rounded-2xl border border-lime-100">
+                <div class="font-bold text-lime-700 text-lg">Misión</div>
+                <div class="text-sm text-slate-600">Erradicar el abandono y fomentar la adopción responsable.</div>
+              </div>
+              <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                <div class="font-bold text-slate-800 text-lg">Visión</div>
+                <div class="text-sm text-slate-600">Un mundo donde cada mascota sea tratada con dignidad y respeto.</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1599443015574-be5fe8a05783?auto=format&fit=crop&q=80&w=800"
+                alt="Voluntario con perro"
+                class="rounded-3xl shadow-2xl relative z-10"
+              />
+              <div class="absolute -top-6 -right-6 w-full h-full bg-lime-100 rounded-3xl -z-10"></div>
+              <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-white rounded-full p-4 shadow-xl z-20 border border-slate-100">
+                <img
+                  src="https://storage.googleapis.com/static-files-prod/ai-studio/f809971a-28e4-4df1-8da6-f94d9b4c0628.png"
+                  alt="Leo Logo Badge"
+                  class="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-slate-50 py-20">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center mb-16 text-slate-800">Nuestros Valores</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-10 rounded-3xl shadow-sm text-center border border-slate-100">
+              <div class="w-20 h-20 bg-lime-50 text-lime-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                <i class="fas fa-shield-heart"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-slate-800">Compromiso</h3>
+              <p class="text-slate-500">No nos rendimos con ningún caso, por difícil que sea.</p>
+            </div>
+            <div class="bg-white p-10 rounded-3xl shadow-sm text-center border border-slate-100">
+              <div class="w-20 h-20 bg-lime-50 text-lime-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                <i class="fas fa-eye"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-slate-800">Transparencia</h3>
+              <p class="text-slate-500">Cada euro donado va íntegramonete al bienestar de los animales.</p>
+            </div>
+            <div class="bg-white p-10 rounded-3xl shadow-sm text-center border border-slate-100">
+              <div class="w-20 h-20 bg-lime-50 text-lime-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-slate-800">Respeto</h3>
+              <p class="text-slate-500">Priorizamos el equilibrio natural y psicológico de cada especie.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-slate-100 py-16">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-1">
+          <a href="index.html" class="flex items-center space-x-3 mb-6">
+            <img
+              src="https://storage.googleapis.com/static-files-prod/ai-studio/f809971a-28e4-4df1-8da6-f94d9b4c0628.png"
+              alt="El Refugio de Leo Logo"
+              class="w-10 h-10 object-contain"
+            />
+            <span class="text-xl font-bold text-slate-800">
+              El Refugio <span class="text-lime-600">de Leo</span>
+            </span>
+          </a>
+          <p class="text-slate-500 leading-relaxed">
+            Dedicados al rescate y protección animal desde 2012. Creemos en una segunda oportunidad para todos.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-800 mb-6 uppercase text-sm tracking-widest">Navegación</h4>
+          <ul class="space-y-4 text-slate-500 text-sm">
+            <li><a href="perros.html" class="hover:text-lime-600 transition-colors">Nuestros Perros</a></li>
+            <li><a href="gatos.html" class="hover:text-lime-600 transition-colors">Nuestros Gatos</a></li>
+            <li><a href="finales-felices.html" class="hover:text-lime-600 transition-colors">Finales Felices</a></li>
+            <li><a href="nosotros.html" class="hover:text-lime-600 transition-colors">Nuestra Historia</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-800 mb-6 uppercase text-sm tracking-widest">Colabora</h4>
+          <ul class="space-y-4 text-slate-500 text-sm">
+            <li><a href="colabora.html" class="hover:text-lime-600 transition-colors">Donaciones</a></li>
+            <li><a href="colabora.html" class="hover:text-lime-600 transition-colors">Teaming</a></li>
+            <li><a href="colabora.html" class="hover:text-lime-600 transition-colors">Voluntariado</a></li>
+            <li><a href="colabora.html" class="hover:text-lime-600 transition-colors">Casas de Acogida</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-800 mb-6 uppercase text-sm tracking-widest">Síguenos</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
+        <p>© 2024 El Refugio de Leo. Todos los derechos reservados.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-lime-600 transition-colors">Privacidad</a>
+          <a href="#" class="hover:text-lime-600 transition-colors">Cookies</a>
+          <a href="#" class="hover:text-lime-600 transition-colors">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggleButton = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+
+    toggleButton?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+      menuIcon?.classList.toggle('fa-bars');
+      menuIcon?.classList.toggle('fa-times');
+    });
+  </script>
+</body>
+</html>
