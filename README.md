@@ -18,7 +18,7 @@ Luego visita `http://localhost:4173`.
 
 ## Publicar en GitHub Pages
 
-1. Asegúrate de que la rama principal se llama `main`.
+1. Asegúrate de que la rama principal se llama `main` (o ajusta el workflow si usas `master`).
 2. Activa GitHub Pages en el repositorio:
    - Settings → Pages → **Build and deployment** → Source: *GitHub Actions*.
 3. Haz push a `main`. El workflow `.github/workflows/pages.yml` publicará el sitio automáticamente.
