@@ -1,0 +1,8 @@
+{
+  "name": "El Refugio de Leo",
+  "description": "Una plataforma profesional y moderna para la adopción de animales, facilitando el encuentro entre mascotas y familias responsables mediante IA.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
