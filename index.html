@@ -1,36 +1,396 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Refugio de Leo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        h1, h2, h3, .serif {
-            font-family: 'Lora', serif;
-        }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.39.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Refugio de Leo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, .serif {
+      font-family: 'Lora', serif;
+    }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
-    <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+  <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20">
+        <div class="flex items-center">
+          <a href="index.html" class="flex items-center space-x-3">
+            <img
+              src="https://storage.googleapis.com/static-files-prod/ai-studio/893a743b-28f0-4d43-9844-0c5a08db1c49.png"
+              alt="El Refugio de Leo Logo Small"
+              class="w-10 h-10 object-contain"
+            />
+            <span class="text-xl font-bold text-slate-700 tracking-tight hidden sm:block">
+              El Refugio <span class="text-lime-600">de Leo</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-lime-700 bg-lime-50">Inicio</a>
+          <a href="perros.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Perros</a>
+          <a href="gatos.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Gatos</a>
+          <a href="finales-felices.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Finales Felices</a>
+          <a href="nosotros.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Nosotros</a>
+          <a href="colabora.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Colabora</a>
+          <a href="contacto.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Contacto</a>
+          <a href="colabora.html" class="ml-4 px-5 py-2.5 bg-lime-600 text-white rounded-full text-sm font-semibold hover:bg-lime-700 transition-all shadow-md shadow-lime-100">
+            Donar Ahora
+          </a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle" class="text-slate-500 hover:text-lime-600 focus:outline-none p-2" aria-label="Abrir menú">
+            <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden bg-white border-b border-slate-100 hidden">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-lime-600 bg-lime-50">Inicio</a>
+        <a href="perros.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Perros</a>
+        <a href="gatos.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Gatos</a>
+        <a href="finales-felices.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Finales Felices</a>
+        <a href="nosotros.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Nosotros</a>
+        <a href="colabora.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Colabora</a>
+        <a href="contacto.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Contacto</a>
+        <div class="pt-4">
+          <a href="colabora.html" class="block w-full text-center px-4 py-3 bg-lime-600 text-white rounded-xl font-bold">Colabora con nosotros</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow pt-20">
+    <div class="space-y-20 pb-20">
+      <section class="relative h-[85vh] flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=2000"
+            alt="Perro y gato juntos"
+            class="w-full h-full object-cover brightness-[0.75]"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-900/70 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+          <div class="max-w-2xl text-white">
+            <span class="inline-block px-4 py-1.5 bg-lime-500 text-sm font-bold uppercase tracking-wider rounded-full mb-6">
+              Refugio de Animales Leo
+            </span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Cada vida merece un <span class="text-lime-400">final feliz</span>.
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-slate-200 font-light leading-relaxed">
+              No solo rescatamos animales, creamos nuevas familias. Ayúdanos a cambiar el destino de cientos de compañeros que esperan por ti.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="colabora.html"
+                class="px-8 py-4 bg-lime-600 hover:bg-lime-700 text-white rounded-xl text-lg font-bold transition-all text-center shadow-lg shadow-lime-900/40 flex items-center justify-center gap-2"
+              >
+                <i class="fas fa-heart"></i> Ayudar ahora
+              </a>
+              <a
+                href="perros.html"
+                class="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-xl text-lg font-bold transition-all text-center"
+              >
+                Ver animales
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container mx-auto px-6">
+        <div class="bg-slate-900 rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+          <div class="absolute top-0 right-0 w-1/3 h-full bg-lime-500/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                Tu donación es su <span class="text-lime-400">única esperanza</span>
+              </h2>
+              <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                No recibimos ayudas públicas. El alimento, las vacunas y las operaciones veterinarias dependen exclusivamente de personas como tú. Incluso 1€ al mes marca la diferencia entre el abandono y una vida digna.
+              </p>
+              <div class="flex flex-wrap gap-4">
+                <a href="colabora.html" class="bg-lime-500 hover:bg-lime-600 text-slate-900 px-8 py-4 rounded-2xl font-bold transition-all flex items-center gap-2">
+                  <i class="fas fa-hand-holding-heart"></i> Formas de Donar
+                </a>
+                <div class="flex items-center gap-6 text-slate-400">
+                  <div class="text-center">
+                    <div class="font-bold text-white text-xl">100%</div>
+                    <div class="text-xs uppercase tracking-widest">Transparente</div>
+                  </div>
+                  <div class="w-px h-8 bg-slate-700"></div>
+                  <div class="text-center">
+                    <div class="font-bold text-white text-xl">Bizum</div>
+                    <div class="text-xs uppercase tracking-widest">Disponible</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white/5 backdrop-blur p-6 rounded-3xl border border-white/10">
+                <div class="text-lime-400 text-3xl mb-2 font-bold">5€</div>
+                <p class="text-slate-400 text-sm italic">Comida para un perro durante una semana.</p>
+              </div>
+              <div class="bg-white/5 backdrop-blur p-6 rounded-3xl border border-white/10 mt-6">
+                <div class="text-lime-400 text-3xl mb-2 font-bold">20€</div>
+                <p class="text-slate-400 text-sm italic">Vacunación completa de un cachorro rescatado.</p>
+              </div>
+              <div class="bg-white/5 backdrop-blur p-6 rounded-3xl border border-white/10">
+                <div class="text-lime-400 text-3xl mb-2 font-bold">50€</div>
+                <p class="text-slate-400 text-sm italic">Cirugía de urgencia o tratamiento crónico.</p>
+              </div>
+              <div class="bg-white/5 backdrop-blur p-6 rounded-3xl border border-white/10 mt-6">
+                <div class="text-lime-400 text-3xl mb-2 font-bold">1€</div>
+                <p class="text-slate-400 text-sm italic">Suscripción a Teaming (ayuda mensual).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container mx-auto px-6">
+        <div class="bg-lime-50/50 rounded-3xl p-8 md:p-12 shadow-inner border border-lime-100">
+          <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+              <div class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full text-lime-600 shadow-sm mb-4">
+                <i class="fas fa-magic text-2xl"></i>
+              </div>
+              <h2 class="text-3xl font-bold mb-4 text-slate-800">¿No sabes qué mascota elegir?</h2>
+              <p class="text-slate-600 text-lg">
+                En la versión HTML no usamos IA, pero podemos orientarte por WhatsApp.
+              </p>
+            </div>
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-lime-100">
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-semibold text-slate-700 mb-2">
+                    Cuéntanos sobre ti (ej: vivo en un piso pequeño, trabajo fuera, tengo niños...)
+                  </label>
+                  <textarea
+                    placeholder="Describe tu rutina diaria y espacio..."
+                    class="w-full h-32 px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-lime-500 focus:border-transparent outline-none transition-all resize-none"
+                    disabled
+                  ></textarea>
+                </div>
+                <a
+                  href="contacto.html"
+                  class="w-full py-4 bg-lime-600 hover:bg-lime-700 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-lime-100"
+                >
+                  <i class="fas fa-wand-magic-sparkles"></i> Escríbenos y te orientamos
+                </a>
+                <p class="text-xs text-slate-400 text-center">Función IA desactivada en la versión HTML estática.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-slate-800 py-20">
+        <div class="container mx-auto px-6">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+              <div class="text-lime-500 mb-3">
+                <i class="fas fa-heart text-3xl"></i>
+              </div>
+              <div class="text-4xl font-bold text-white mb-1">1.2k+</div>
+              <div class="text-slate-400 uppercase text-xs tracking-widest font-semibold">Rescatados</div>
+            </div>
+            <div class="text-center">
+              <div class="text-lime-500 mb-3">
+                <i class="fas fa-home text-3xl"></i>
+              </div>
+              <div class="text-4xl font-bold text-white mb-1">950+</div>
+              <div class="text-slate-400 uppercase text-xs tracking-widest font-semibold">Adoptados</div>
+            </div>
+            <div class="text-center">
+              <div class="text-lime-500 mb-3">
+                <i class="fas fa-users text-3xl"></i>
+              </div>
+              <div class="text-4xl font-bold text-white mb-1">45</div>
+              <div class="text-slate-400 uppercase text-xs tracking-widest font-semibold">Voluntarios</div>
+            </div>
+            <div class="text-center">
+              <div class="text-lime-500 mb-3">
+                <i class="fas fa-calendar-check text-3xl"></i>
+              </div>
+              <div class="text-4xl font-bold text-white mb-1">12</div>
+              <div class="text-slate-400 uppercase text-xs tracking-widest font-semibold">Años salvando vidas</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+          <div>
+            <h2 class="text-4xl font-bold mb-4 text-slate-800">Nuestros Amigos</h2>
+            <p class="text-slate-600 text-lg max-w-xl">
+              Estos son solo algunos de los compañeros que esperan encontrar un hogar hoy mismo.
+            </p>
+          </div>
+          <a href="perros.html" class="text-lime-600 font-bold hover:underline flex items-center gap-2">
+            Ver todos <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all">
+            <div class="h-64 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=800" alt="Max" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-slate-800 uppercase">
+                  Perro
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="text-2xl font-bold text-slate-800">Max</h3>
+                <span class="text-lime-600 font-medium">2 años</span>
+              </div>
+              <p class="text-slate-500 mb-6 italic">"Muy cariñoso y juguetón, ideal para familias con niños."</p>
+              <a href="perros.html" class="block w-full text-center py-3 bg-slate-50 hover:bg-lime-600 hover:text-white rounded-xl font-bold transition-all">
+                Saber más
+              </a>
+            </div>
+          </div>
+          <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all">
+            <div class="h-64 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=800" alt="Luna" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-slate-800 uppercase">
+                  Gato
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="text-2xl font-bold text-slate-800">Luna</h3>
+                <span class="text-lime-600 font-medium">6 meses</span>
+              </div>
+              <p class="text-slate-500 mb-6 italic">"Muy cariñosa y juguetona, ideal para hogares tranquilos."</p>
+              <a href="gatos.html" class="block w-full text-center py-3 bg-slate-50 hover:bg-lime-600 hover:text-white rounded-xl font-bold transition-all">
+                Saber más
+              </a>
+            </div>
+          </div>
+          <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all">
+            <div class="h-64 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800" alt="Rocky" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-slate-800 uppercase">
+                  Perro
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="text-2xl font-bold text-slate-800">Rocky</h3>
+                <span class="text-lime-600 font-medium">4 años</span>
+              </div>
+              <p class="text-slate-500 mb-6 italic">"Leal y protector, un compañero fiel para siempre."</p>
+              <a href="perros.html" class="block w-full text-center py-3 bg-slate-50 hover:bg-lime-600 hover:text-white rounded-xl font-bold transition-all">
+                Saber más
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-slate-100 py-16">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-1">
+          <a href="index.html" class="flex items-center space-x-3 mb-6">
+            <img
+              src="https://storage.googleapis.com/static-files-prod/ai-studio/f809971a-28e4-4df1-8da6-f94d9b4c0628.png"
+              alt="El Refugio de Leo Logo"
+              class="w-10 h-10 object-contain"
+            />
+            <span class="text-xl font-bold text-slate-800">
+              El Refugio <span class="text-lime-600">de Leo</span>
+            </span>
+          </a>
+          <p class="text-slate-500 leading-relaxed">
+            Dedicados al rescate y protección animal desde 2012. Creemos en una segunda oportunidad para todos.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-800 mb-6 uppercase text-sm tracking-widest">Navegación</h4>
+          <ul class="space-y-4 text-slate-500 text-sm">
+            <li><a href="perros.html" class="hover:text-lime-600 transition-colors">Nuestros Perros</a></li>
+            <li><a href="gatos.html" class="hover:text-lime-600 transition-colors">Nuestros Gatos</a></li>
+            <li><a href="finales-felices.html" class="hover:text-lime-600 transition-colors">Finales Felices</a></li>
+            <li><a href="nosotros.html" class="hover:text-lime-600 transition-colors">Nuestra Historia</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-800 mb-6 uppercase text-sm tracking-widest">Colabora</h4>
+          <ul class="space-y-4 text-slate-500 text-sm">
+            <li><a href="colabora.html" class="hover:text-lime-600 transition-colors">Donaciones</a></li>
+            <li><a href="colabora.html" class="hover:text-lime-600 transition-colors">Teaming</a></li>
+            <li><a href="colabora.html" class="hover:text-lime-600 transition-colors">Voluntariado</a></li>
+            <li><a href="colabora.html" class="hover:text-lime-600 transition-colors">Casas de Acogida</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-800 mb-6 uppercase text-sm tracking-widest">Síguenos</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
+        <p>© 2024 El Refugio de Leo. Todos los derechos reservados.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-lime-600 transition-colors">Privacidad</a>
+          <a href="#" class="hover:text-lime-600 transition-colors">Cookies</a>
+          <a href="#" class="hover:text-lime-600 transition-colors">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggleButton = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+
+    toggleButton?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+      menuIcon?.classList.toggle('fa-bars');
+      menuIcon?.classList.toggle('fa-times');
+    });
+  </script>
 </body>
 </html>
