@@ -161,7 +161,7 @@
       </div>
 
       <div class="mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
-        <p>© 2024 El Refugio de Leo. Todos los derechos reservados.</p>
+        <p>© <span id="current-year"></span> El Refugio de Leo. Todos los derechos reservados.</p>
         <div class="flex gap-6">
           <a href="#" class="hover:text-lime-600 transition-colors">Privacidad</a>
           <a href="#" class="hover:text-lime-600 transition-colors">Cookies</a>
@@ -187,6 +187,8 @@
     document.addEventListener('DOMContentLoaded', () => {
       cargarAnimales(null, true);
     });
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

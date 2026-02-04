@@ -104,25 +104,27 @@
                 <i class="fas fa-mobile-screen-button"></i>
               </div>
               <h3 class="text-2xl font-bold mb-2 text-slate-800">Bizum</h3>
-              <p class="text-lime-600 font-mono font-bold text-lg mb-1">Código: 01234</p>
-              <p class="text-slate-400 text-sm">O busca "El Refugio de Leo" en ONGs</p>
+              <p class="text-lime-600 font-mono font-bold text-lg mb-3">647864080</p>
+              <button onclick="navigator.clipboard.writeText('647864080'); this.innerHTML='<i class=\'fas fa-check\'></i> Copiado'; setTimeout(() => this.innerHTML='<i class=\'fas fa-copy\'></i> Copiar teléfono', 2000)" class="px-4 py-2 bg-lime-600 hover:bg-lime-700 text-white rounded-lg text-sm font-semibold transition-all">
+                <i class="fas fa-copy"></i> Copiar teléfono
+              </button>
             </div>
-            <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all text-center">
+            <a href="https://www.paypal.com/paypalme/elrefugiodeleo" target="_blank" rel="noopener noreferrer" class="block bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all text-center">
               <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6 shadow-lg shadow-slate-200">
                 <i class="fab fa-paypal"></i>
               </div>
               <h3 class="text-2xl font-bold mb-2 text-slate-800">PayPal</h3>
-              <p class="text-lime-600 font-mono font-bold text-lg mb-1">donaciones@elrefugiodeleo.com</p>
+              <p class="text-lime-600 font-bold text-lg mb-1">paypal.me/elrefugiodeleo</p>
               <p class="text-slate-400 text-sm">Donación segura y rápida</p>
-            </div>
-            <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all text-center">
+            </a>
+            <a href="https://www.teaming.net/apaelrefugiodeleo" target="_blank" rel="noopener noreferrer" class="block bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all text-center">
               <div class="w-16 h-16 bg-lime-600 text-white rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6 shadow-lg shadow-slate-200">
                 <i class="fas fa-users"></i>
               </div>
               <h3 class="text-2xl font-bold mb-2 text-slate-800">Teaming</h3>
               <p class="text-lime-600 font-mono font-bold text-lg mb-1">1€ al mes</p>
               <p class="text-slate-400 text-sm">Micro-donaciones mensuales constantes</p>
-            </div>
+            </a>
           </div>
 
           <div class="bg-slate-800 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
@@ -136,17 +138,17 @@
                 </div>
                 <p class="text-slate-400 mb-6">Aportaciones directas para proyectos específicos o mantenimiento general:</p>
                 <div class="bg-white/5 p-5 rounded-2xl border border-white/10 font-mono text-lg md:text-xl tracking-wider mb-2 select-all cursor-pointer hover:bg-white/10 transition-all">
-                  ES12 3456 7890 1234 5678 9012
+                  ES92 0081 7431 9300 0196 8807
                 </div>
                 <div class="flex justify-between items-center px-2">
-                  <span class="text-xs text-slate-500 uppercase tracking-widest font-bold">Titular: El Refugio de Leo</span>
+                  <span class="text-xs text-slate-500 uppercase tracking-widest font-bold">Titular: Asociacion Refugio canino de Leo</span>
                   <span class="text-xs text-lime-400 font-bold uppercase">Copiar IBAN</span>
                 </div>
               </div>
               <div class="hidden lg:block w-px h-32 bg-white/10"></div>
               <div class="text-center md:text-right">
                 <p class="text-slate-400 text-sm mb-4">¿Necesitas certificado de donación?<br />Escríbenos a:</p>
-                <a href="mailto:administracion@elrefugiodeleo.com" class="text-xl font-bold text-lime-400 hover:underline">administracion@elrefugiodeleo.com</a>
+                <a href="mailto:administracion@elrefugiodeleo.com" class="text-xl font-bold text-lime-400 hover:underline">elrefugiodeleo@gmail.com</a>
               </div>
             </div>
             <div class="absolute top-0 right-0 w-64 h-64 bg-lime-500/10 blur-[100px] rounded-full"></div>
@@ -252,7 +254,7 @@
       </div>
 
       <div class="mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
-        <p>© 2024 El Refugio de Leo. Todos los derechos reservados.</p>
+        <p>© <span id="current-year"></span> El Refugio de Leo. Todos los derechos reservados.</p>
         <div class="flex gap-6">
           <a href="#" class="hover:text-lime-600 transition-colors">Privacidad</a>
           <a href="#" class="hover:text-lime-600 transition-colors">Cookies</a>
@@ -272,6 +274,8 @@
       menuIcon?.classList.toggle('fa-bars');
       menuIcon?.classList.toggle('fa-times');
     });
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

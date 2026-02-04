@@ -87,12 +87,12 @@
         <h1 class="text-5xl font-bold mb-6 text-slate-800">Contacta con nosotros</h1>
         <p class="text-xl text-slate-600 mb-16 leading-relaxed">
           Para evitar spam y garantizar que nuestra atención se centre en los animales, no utilizamos formularios de contacto.
-          Respondemos mucho más rápido a través de nuestras redes sociales o WhatsApp.
+          Respondemos mucho más rápido a través de nuestras redes sociales, WhatsApp o email.
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <a
-            href="#"
+            href="https://www.instagram.com/elrefugiodeleo/"
             class="group flex items-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
           >
             <div class="w-16 h-16 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg mr-6">
@@ -107,7 +107,7 @@
             </div>
           </a>
           <a
-            href="#"
+            href="https://www.facebook.com/elrefugiodeleo"
             class="group flex items-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
           >
             <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg mr-6">
@@ -122,7 +122,7 @@
             </div>
           </a>
           <a
-            href="https://wa.me/34123456789"
+            href="https://wa.me/34647864080"
             target="_blank"
             rel="noopener noreferrer"
             class="group flex items-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
@@ -139,15 +139,15 @@
             </div>
           </a>
           <a
-            href="#"
+            href="mailto:elrefugiodeleo@gmail.com"
             class="group flex items-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
           >
-            <div class="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg mr-6">
-              <i class="fab fa-tiktok"></i>
+            <div class="w-16 h-16 bg-red-500 text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg mr-6">
+              <i class="fas fa-envelope"></i>
             </div>
             <div class="text-left">
-              <div class="text-sm text-slate-400 uppercase tracking-widest font-bold mb-1">TikTok</div>
-              <div class="text-xl font-bold text-slate-800 group-hover:text-lime-600 transition-colors">@refugioleo</div>
+              <div class="text-sm text-slate-400 uppercase tracking-widest font-bold mb-1">Email</div>
+              <div class="text-xl font-bold text-slate-800 group-hover:text-lime-600 transition-colors">elrefugiodeleo@gmail.com</div>
             </div>
             <div class="ml-auto text-slate-300 group-hover:text-lime-400 transition-colors">
               <i class="fas fa-arrow-right"></i>
@@ -164,18 +164,8 @@
               <h3 class="text-xl font-bold mb-2 text-slate-800">¿Dónde estamos?</h3>
               <p class="text-slate-600">
                 Por seguridad de nuestros animales, la ubicación exacta se facilita bajo cita previa.<br />
-                Estamos situados en las afueras de <strong>Valencia, España</strong>.
+                Estamos situados en las afueras de <strong>Vélez-Málaga, Andalucía</strong>.
               </p>
-              <div class="mt-4 flex gap-4">
-                <span class="flex items-center gap-2 text-sm font-bold text-slate-500">
-                  <i class="fas fa-clock text-lime-500"></i>
-                  L-V: 10:00 - 18:00
-                </span>
-                <span class="flex items-center gap-2 text-sm font-bold text-slate-500">
-                  <i class="fas fa-clock text-lime-500"></i>
-                  S-D: 10:00 - 14:00
-                </span>
-              </div>
             </div>
           </div>
         </div>
@@ -242,7 +232,7 @@
       </div>
 
       <div class="mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
-        <p>© 2024 El Refugio de Leo. Todos los derechos reservados.</p>
+        <p>© <span id="current-year"></span> El Refugio de Leo. Todos los derechos reservados.</p>
         <div class="flex gap-6">
           <a href="#" class="hover:text-lime-600 transition-colors">Privacidad</a>
           <a href="#" class="hover:text-lime-600 transition-colors">Cookies</a>
@@ -262,6 +252,8 @@
       menuIcon?.classList.toggle('fa-bars');
       menuIcon?.classList.toggle('fa-times');
     });
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
