@@ -38,7 +38,7 @@
               alt="El Refugio de Leo Logo Small"
               class="w-10 h-10 object-contain"
             />
-            <span class="text-xl font-bold text-slate-700 tracking-tight hidden sm:block">
+            <span class="text-sm sm:text-xl font-bold text-slate-700 tracking-tight">
               El Refugio <span class="text-lime-600">de Leo</span>
             </span>
           </a>
@@ -112,38 +112,42 @@
             </p>
           </div>
           <div class="flex-1">
-            <div class="relative">
-              <div class="grid grid-cols-3 gap-4">
-                <div class="text-center">
-                  <img
-                    src="assets/maya.jpg"
-                    alt="Maya"
-                    class="rounded-2xl shadow-lg w-full h-32 object-cover mb-2"
-                  />
-                  <p class="text-sm font-semibold text-slate-700">Maya</p>
-                </div>
-                <div class="text-center">
-                  <img
-                    src="assets/fito.jpg"
-                    alt="Fito"
-                    class="rounded-2xl shadow-lg w-full h-32 object-cover mb-2"
-                  />
-                  <p class="text-sm font-semibold text-slate-700">Fito</p>
-                </div>
-                <div class="text-center">
-                  <img
-                    src="assets/hera.jpg"
-                    alt="Hera"
-                    class="rounded-2xl shadow-lg w-full h-32 object-cover mb-2"
-                  />
-                  <p class="text-sm font-semibold text-slate-700">Hera</p>
-                </div>
+            <div class="relative min-h-[400px] flex items-center justify-center">
+              <!-- Polaroid de Maya -->
+              <div class="absolute top-0 left-8 bg-white p-4 rounded-lg shadow-2xl transform rotate-[-8deg] hover:rotate-0 hover:scale-105 transition-all duration-300 z-10">
+                <img
+                  src="assets/maya.jpg"
+                  alt="Maya"
+                  class="w-48 h-48 object-cover rounded mb-3"
+                />
+                <p class="text-center font-handwriting text-lg font-semibold text-slate-700">Maya</p>
               </div>
-              <div class="mt-6 p-6 bg-lime-50 rounded-2xl border border-lime-100">
-                <p class="text-sm text-slate-600 italic">
-                  "Maya, Fito y Hera fueron parte de los primeros animales que rescatamos, marcando el inicio de nuestra misión."
-                </p>
+
+              <!-- Polaroid de Fito -->
+              <div class="absolute top-12 right-12 bg-white p-4 rounded-lg shadow-2xl transform rotate-[6deg] hover:rotate-0 hover:scale-105 transition-all duration-300 z-20">
+                <img
+                  src="assets/fito.jpg"
+                  alt="Fito"
+                  class="w-48 h-48 object-cover rounded mb-3"
+                />
+                <p class="text-center font-handwriting text-lg font-semibold text-slate-700">Fito</p>
               </div>
+
+              <!-- Polaroid de Hera -->
+              <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-lg shadow-2xl rotate-[-3deg] hover:rotate-0 hover:scale-105 transition-all duration-300 z-30">
+                <img
+                  src="assets/hera.jpg"
+                  alt="Hera"
+                  class="w-48 h-48 object-cover rounded mb-3"
+                />
+                <p class="text-center font-handwriting text-lg font-semibold text-slate-700">Hera</p>
+              </div>
+            </div>
+
+            <div class="mt-8 p-6 bg-lime-50 rounded-2xl border border-lime-100">
+              <p class="text-sm text-slate-600 italic text-justify">
+                "Maya, Fito y Hera fueron parte de los primeros animales que rescatamos, marcando el inicio de nuestra misión."
+              </p>
             </div>
           </div>
         </div>
@@ -195,7 +199,7 @@
             </span>
           </a>
           <p class="text-slate-500 leading-relaxed">
-            Dedicados al rescate y protección animal desde 2012. Creemos en una segunda oportunidad para todos.
+            Una organización benéfica dedicada a rescatar, cuidar y encontrar hogares para animales abandonados. Funcionamos gracias al apoyo de voluntarios y donaciones.
           </p>
         </div>
 
@@ -222,17 +226,11 @@
         <div>
           <h4 class="font-bold text-slate-800 mb-6 uppercase text-sm tracking-widest">Síguenos</h4>
           <div class="flex space-x-4">
-            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
+            <a href="https://www.instagram.com/elrefugiodeleo/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
+            <a href="https://www.facebook.com/elrefugiodeleo" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
               <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-slate-50 text-slate-400 hover:bg-lime-500 hover:text-white rounded-full flex items-center justify-center transition-all">
-              <i class="fab fa-whatsapp"></i>
             </a>
           </div>
         </div>
