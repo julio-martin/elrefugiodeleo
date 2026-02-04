@@ -93,68 +93,11 @@
         <p class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Filtros desactivados en versión HTML.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-slate-50">
-          <div class="relative h-72 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=600" alt="Nala" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-            <div class="absolute bottom-4 left-4 flex flex-wrap gap-2 pr-4">
-              <span class="px-2 py-1 bg-black/60 backdrop-blur text-white text-[10px] uppercase font-bold rounded">Cariñosa</span>
-              <span class="px-2 py-1 bg-black/60 backdrop-blur text-white text-[10px] uppercase font-bold rounded">Hogar</span>
-            </div>
-          </div>
-          <div class="p-8">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-2xl font-bold text-slate-800">Nala</h3>
-              <span class="text-slate-400 font-medium text-sm">1 año</span>
-            </div>
-            <p class="text-slate-600 mb-6 line-clamp-2 leading-relaxed h-12">
-              Elegante y muy tranquila. Le encanta dormir en lugares soleados y es muy limpia.
-            </p>
-            <div class="flex items-center gap-4 text-sm text-slate-500 mb-8 border-t border-slate-50 pt-4">
-              <div class="flex items-center gap-1.5">
-                <i class="fas fa-ruler-combined text-lime-500"></i>
-                <span class="capitalize">pequeño</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <i class="fas fa-venus-mars text-lime-500"></i>
-                <span class="capitalize">hembra</span>
-              </div>
-            </div>
-            <a href="contacto.html" class="w-full block py-3.5 text-center bg-lime-600 hover:bg-lime-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-lime-100">
-              Me interesa adoptar
-            </a>
-          </div>
-        </div>
-
-        <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-slate-50">
-          <div class="relative h-72 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&q=80&w=600" alt="Milo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-            <div class="absolute bottom-4 left-4 flex flex-wrap gap-2 pr-4">
-              <span class="px-2 py-1 bg-black/60 backdrop-blur text-white text-[10px] uppercase font-bold rounded">Juguetón</span>
-            </div>
-          </div>
-          <div class="p-8">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-2xl font-bold text-slate-800">Milo</h3>
-              <span class="text-slate-400 font-medium text-sm">2 meses</span>
-            </div>
-            <p class="text-slate-600 mb-6 line-clamp-2 leading-relaxed h-12">
-              Energía pura en formato pequeño. Busca una familia que tenga paciencia para sus juegos.
-            </p>
-            <div class="flex items-center gap-4 text-sm text-slate-500 mb-8 border-t border-slate-50 pt-4">
-              <div class="flex items-center gap-1.5">
-                <i class="fas fa-ruler-combined text-lime-500"></i>
-                <span class="capitalize">pequeño</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <i class="fas fa-venus-mars text-lime-500"></i>
-                <span class="capitalize">macho</span>
-              </div>
-            </div>
-            <a href="contacto.html" class="w-full block py-3.5 text-center bg-lime-600 hover:bg-lime-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-lime-100">
-              Me interesa adoptar
-            </a>
-          </div>
+      <div id="animales-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Los animales se cargan dinámicamente desde el JSON -->
+        <div class="col-span-full text-center py-12">
+          <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-lime-600"></div>
+          <p class="text-slate-500 mt-4">Cargando gatos...</p>
         </div>
       </div>
     </div>
@@ -229,6 +172,7 @@
     </div>
   </footer>
 
+  <script src="js/animals.js"></script>
   <script>
     const toggleButton = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -238,6 +182,11 @@
       mobileMenu?.classList.toggle('hidden');
       menuIcon?.classList.toggle('fa-bars');
       menuIcon?.classList.toggle('fa-times');
+    });
+
+    // Cargar gatos cuando la página cargue
+    document.addEventListener('DOMContentLoaded', () => {
+      cargarAnimales('gato', false);
     });
   </script>
 </body>

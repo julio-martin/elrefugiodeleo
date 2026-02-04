@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nuestros Perros | El Refugio de Leo</title>
+  <title>Animal | El Refugio de Leo</title>
 
   <!-- Meta tags para redes sociales -->
-  <meta property="og:title" content="Nuestros Perros | El Refugio de Leo" />
-  <meta property="og:description" content="Conoce a los perros que esperan encontrar un hogar lleno de amor." />
+  <meta property="og:title" content="El Refugio de Leo" />
+  <meta property="og:description" content="Conoce a nuestros animales en adopción" />
   <meta property="og:image" content="assets/og-image.jpg" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -46,7 +46,7 @@
 
         <div class="hidden md:flex items-center space-x-1">
           <a href="index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Inicio</a>
-          <a href="perros.html" class="px-4 py-2 rounded-lg text-sm font-medium text-lime-700 bg-lime-50">Perros</a>
+          <a href="perros.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Perros</a>
           <a href="gatos.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Gatos</a>
           <a href="finales-felices.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Finales Felices</a>
           <a href="nosotros.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-lime-600 hover:bg-slate-50">Nosotros</a>
@@ -68,7 +68,7 @@
     <div id="mobile-menu" class="md:hidden bg-white border-b border-slate-100 hidden">
       <div class="px-4 pt-2 pb-6 space-y-1">
         <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Inicio</a>
-        <a href="perros.html" class="block px-4 py-3 rounded-lg text-base font-medium text-lime-600 bg-lime-50">Perros</a>
+        <a href="perros.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Perros</a>
         <a href="gatos.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Gatos</a>
         <a href="finales-felices.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Finales Felices</a>
         <a href="nosotros.html" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-600">Nosotros</a>
@@ -82,23 +82,11 @@
   </nav>
 
   <main class="flex-grow pt-20">
-    <div class="container mx-auto px-6 py-12">
-      <div class="flex flex-col mb-12 border-b border-slate-100 pb-8">
-        <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
-          <div>
-            <h1 class="text-4xl font-bold mb-2 text-slate-800">Nuestros Perros</h1>
-            <p class="text-slate-500">Conoce a los perros que buscan un hogar para siempre.</p>
-          </div>
-        </div>
-        <p class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Filtros desactivados en versión HTML.</p>
-      </div>
-
-      <div id="animales-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Los animales se cargan dinámicamente desde el JSON -->
-        <div class="col-span-full text-center py-12">
-          <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-lime-600"></div>
-          <p class="text-slate-500 mt-4">Cargando perros...</p>
-        </div>
+    <div id="animal-detail" class="min-h-screen py-12">
+      <!-- El contenido se carga dinámicamente con JavaScript -->
+      <div class="container mx-auto px-6 text-center">
+        <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-lime-600"></div>
+        <p class="text-slate-500 mt-4">Cargando...</p>
       </div>
     </div>
   </main>
@@ -184,10 +172,8 @@
       menuIcon?.classList.toggle('fa-times');
     });
 
-    // Cargar perros cuando la página cargue
-    document.addEventListener('DOMContentLoaded', () => {
-      cargarAnimales('perro', false);
-    });
+    // Cargar animal individual cuando la página cargue
+    document.addEventListener('DOMContentLoaded', cargarAnimalIndividual);
   </script>
 </body>
 </html>

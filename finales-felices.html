@@ -92,67 +92,11 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-slate-50">
-          <div class="relative h-72 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=600" alt="Toby" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-            <div class="absolute top-4 right-4 bg-lime-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-              <i class="fas fa-check-circle"></i> Adoptado
-            </div>
-            <div class="absolute bottom-4 left-4 flex flex-wrap gap-2 pr-4">
-              <span class="px-2 py-1 bg-black/60 backdrop-blur text-white text-[10px] uppercase font-bold rounded">Valiente</span>
-            </div>
-          </div>
-          <div class="p-8">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-2xl font-bold text-slate-800">Toby</h3>
-              <span class="text-slate-400 font-medium text-sm">5 años</span>
-            </div>
-            <p class="text-slate-600 mb-6 line-clamp-2 leading-relaxed h-12">
-              Toby fue rescatado de una situación difícil y ahora vive feliz con su nueva familia en Madrid.
-            </p>
-            <div class="flex items-center gap-4 text-sm text-slate-500 border-t border-slate-50 pt-4">
-              <div class="flex items-center gap-1.5">
-                <i class="fas fa-ruler-combined text-lime-500"></i>
-                <span class="capitalize">mediano</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <i class="fas fa-venus-mars text-lime-500"></i>
-                <span class="capitalize">macho</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-slate-50">
-          <div class="relative h-72 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1511044568932-338cba0ad803?auto=format&fit=crop&q=80&w=600" alt="Coco" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-            <div class="absolute top-4 right-4 bg-lime-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-              <i class="fas fa-check-circle"></i> Adoptado
-            </div>
-            <div class="absolute bottom-4 left-4 flex flex-wrap gap-2 pr-4">
-              <span class="px-2 py-1 bg-black/60 backdrop-blur text-white text-[10px] uppercase font-bold rounded">Hogareña</span>
-            </div>
-          </div>
-          <div class="p-8">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-2xl font-bold text-slate-800">Coco</h3>
-              <span class="text-slate-400 font-medium text-sm">4 años</span>
-            </div>
-            <p class="text-slate-600 mb-6 line-clamp-2 leading-relaxed h-12">
-              Coco encontró el sofá de sus sueños hace dos meses. ¡Mirad qué cara de felicidad!
-            </p>
-            <div class="flex items-center gap-4 text-sm text-slate-500 border-t border-slate-50 pt-4">
-              <div class="flex items-center gap-1.5">
-                <i class="fas fa-ruler-combined text-lime-500"></i>
-                <span class="capitalize">mediano</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <i class="fas fa-venus-mars text-lime-500"></i>
-                <span class="capitalize">hembra</span>
-              </div>
-            </div>
-          </div>
+      <div id="animales-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Los animales adoptados se cargan dinámicamente desde el JSON -->
+        <div class="col-span-full text-center py-12">
+          <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-lime-600"></div>
+          <p class="text-slate-500 mt-4">Cargando finales felices...</p>
         </div>
       </div>
     </div>
@@ -227,6 +171,7 @@
     </div>
   </footer>
 
+  <script src="js/animals.js"></script>
   <script>
     const toggleButton = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -236,6 +181,11 @@
       mobileMenu?.classList.toggle('hidden');
       menuIcon?.classList.toggle('fa-bars');
       menuIcon?.classList.toggle('fa-times');
+    });
+
+    // Cargar animales adoptados (finales felices) cuando la página cargue
+    document.addEventListener('DOMContentLoaded', () => {
+      cargarAnimales(null, true);
     });
   </script>
 </body>
