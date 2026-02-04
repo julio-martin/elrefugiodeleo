@@ -194,15 +194,17 @@ async function cargarAnimalIndividual() {
 
               <div class="bg-slate-50 rounded-2xl p-6 mb-6">
                 <h2 class="text-xl font-bold text-slate-800 mb-4">Información</h2>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid ${animal.tipo === 'gato' ? 'grid-cols-1' : 'grid-cols-2'} gap-4">
                   <div>
                     <p class="text-slate-500 text-sm">Sexo</p>
                     <p class="font-semibold text-slate-800">${animal.sexo}</p>
                   </div>
-                  <div>
-                    <p class="text-slate-500 text-sm">Tamaño</p>
-                    <p class="font-semibold text-slate-800">${animal.tamano}</p>
-                  </div>
+                  ${animal.tipo !== 'gato' ? `
+                    <div>
+                      <p class="text-slate-500 text-sm">Tamaño</p>
+                      <p class="font-semibold text-slate-800">${animal.tamano}</p>
+                    </div>
+                  ` : ''}
                 </div>
               </div>
 
