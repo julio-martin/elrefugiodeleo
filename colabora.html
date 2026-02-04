@@ -142,7 +142,9 @@
                 </div>
                 <div class="flex justify-between items-center px-2">
                   <span class="text-xs text-slate-500 uppercase tracking-widest font-bold">Titular: Asociacion Refugio canino de Leo</span>
-                  <span class="text-xs text-lime-400 font-bold uppercase">Copiar IBAN</span>
+                  <button onclick="navigator.clipboard.writeText('ES92 0081 7431 9300 0196 8807'); this.innerHTML='<i class=\'fas fa-check\'></i> Copiado'; setTimeout(() => this.innerHTML='<i class=\'fas fa-copy\'></i> Copiar IBAN', 2000)" class="text-xs text-lime-400 hover:text-lime-300 font-bold uppercase transition-colors">
+                    <i class="fas fa-copy"></i> Copiar IBAN
+                  </button>
                 </div>
               </div>
               <div class="hidden lg:block w-px h-32 bg-white/10"></div>
