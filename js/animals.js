@@ -54,16 +54,26 @@ function getFotosAnimal(animal) {
 function crearCardAnimal(animal) {
   const edad = calcularEdad(animal.fecha_nacimiento);
   const fotoPrincipal = getFotoPrincipal(animal);
-  const tipoLabel = animal.tipo.charAt(0).toUpperCase() + animal.tipo.slice(1);
+
+  // Formatear sexo con icono
+  const sexoIcon = animal.sexo === 'macho' ? '♂' : '♀';
+  const sexoLabel = animal.sexo ? animal.sexo.charAt(0).toUpperCase() + animal.sexo.slice(1) : '';
+  const sexoColor = animal.sexo === 'macho' ? 'text-blue-600' : 'text-pink-600';
+
+  // Formatear tamaño
+  const tamanoLabel = animal.tamano ? animal.tamano.charAt(0).toUpperCase() + animal.tamano.slice(1) : '';
 
   return `
     <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all">
       <div class="h-64 overflow-hidden relative">
         <img src="${fotoPrincipal}" alt="${animal.nombre}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=800'" />
-        <div class="absolute top-4 left-4">
-          <span class="px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-slate-800 uppercase">
-            ${tipoLabel}
-          </span>
+        <div class="absolute top-4 left-4 flex gap-2">
+          ${sexoLabel ? `<span class="px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold ${sexoColor} uppercase flex items-center gap-1">
+            <span class="text-base">${sexoIcon}</span> ${sexoLabel}
+          </span>` : ''}
+          ${tamanoLabel ? `<span class="px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-slate-800 uppercase flex items-center">
+            ${tamanoLabel}
+          </span>` : ''}
         </div>
         ${animal.finales_felices ? '<div class="absolute top-4 right-4"><span class="px-3 py-1 bg-lime-500 backdrop-blur rounded-full text-xs font-bold text-white uppercase">Adoptado</span></div>' : ''}
       </div>

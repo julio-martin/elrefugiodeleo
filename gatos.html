@@ -90,7 +90,20 @@
             <p class="text-slate-500">Conoce a los gatos que buscan un hogar para siempre.</p>
           </div>
         </div>
-        <p class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Filtros desactivados en versión HTML.</p>
+        <div class="flex flex-col gap-2">
+          <span class="text-xs text-slate-400 uppercase tracking-widest font-semibold">Sexo</span>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="filtrarAnimales('sexo', null)" class="filter-chip filter-active px-4 py-2 rounded-full text-sm font-semibold transition-all border-2">
+              Todos
+            </button>
+            <button onclick="filtrarAnimales('sexo', 'macho')" class="filter-chip px-4 py-2 rounded-full text-sm font-semibold transition-all border-2">
+              ♂ Macho
+            </button>
+            <button onclick="filtrarAnimales('sexo', 'hembra')" class="filter-chip px-4 py-2 rounded-full text-sm font-semibold transition-all border-2">
+              ♀ Hembra
+            </button>
+          </div>
+        </div>
       </div>
 
       <div id="animales-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -166,6 +179,23 @@
     </div>
   </footer>
 
+  <style>
+    .filter-chip {
+      background-color: white;
+      color: #64748b;
+      border-color: #e2e8f0;
+    }
+    .filter-chip:hover {
+      border-color: #84cc16;
+      color: #84cc16;
+    }
+    .filter-chip.filter-active {
+      background-color: #84cc16;
+      color: white;
+      border-color: #84cc16;
+    }
+  </style>
+
   <script src="js/animals.js"></script>
   <script>
     const toggleButton = document.getElementById('menu-toggle');
@@ -178,9 +208,57 @@
       menuIcon?.classList.toggle('fa-times');
     });
 
+    // Variables para los filtros
+    let filtroSexo = null;
+    let todosLosAnimales = [];
+
+    // Función para filtrar animales
+    function filtrarAnimales(tipo, valor) {
+      filtroSexo = valor;
+
+      // Actualizar estilos de los chips
+      document.querySelectorAll('.filter-chip').forEach(chip => {
+        const text = chip.textContent.toLowerCase();
+        if ((valor === null && text.includes('todos')) ||
+            (valor && text.includes(valor))) {
+          chip.classList.add('filter-active');
+        } else {
+          chip.classList.remove('filter-active');
+        }
+      });
+
+      // Aplicar filtro
+      let animalesFiltrados = todosLosAnimales;
+
+      if (filtroSexo) {
+        animalesFiltrados = animalesFiltrados.filter(a => a.sexo === filtroSexo);
+      }
+
+      // Renderizar
+      const contenedor = document.getElementById('animales-grid');
+      if (animalesFiltrados.length === 0) {
+        contenedor.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-slate-500 text-lg">No hay gatos que coincidan con el filtro seleccionado.</p></div>';
+      } else {
+        contenedor.innerHTML = animalesFiltrados.map(animal => crearCardAnimal(animal)).join('');
+      }
+    }
+
     // Cargar gatos cuando la página cargue
-    document.addEventListener('DOMContentLoaded', () => {
-      cargarAnimales('gato', false);
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('data/animals.json');
+        const data = await response.json();
+        todosLosAnimales = data.animales.filter(a => a.tipo === 'gato' && !a.finales_felices);
+
+        const contenedor = document.getElementById('animales-grid');
+        if (todosLosAnimales.length === 0) {
+          contenedor.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-slate-500 text-lg">No hay gatos disponibles en este momento.</p></div>';
+        } else {
+          contenedor.innerHTML = todosLosAnimales.map(animal => crearCardAnimal(animal)).join('');
+        }
+      } catch (error) {
+        console.error('Error cargando animales:', error);
+      }
     });
 
     document.getElementById('current-year').textContent = new Date().getFullYear();

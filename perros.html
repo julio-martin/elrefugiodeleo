@@ -90,7 +90,39 @@
             <p class="text-slate-500">Conoce a los perros que buscan un hogar para siempre.</p>
           </div>
         </div>
-        <p class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Filtros desactivados en versión HTML.</p>
+        <div class="flex flex-col sm:flex-row gap-6">
+          <div class="flex flex-col gap-2">
+            <span class="text-xs text-slate-400 uppercase tracking-widest font-semibold">Sexo</span>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="filtrarAnimales('sexo', null)" class="filter-chip filter-active px-4 py-2 rounded-full text-sm font-semibold transition-all border-2">
+                Todos
+              </button>
+              <button onclick="filtrarAnimales('sexo', 'macho')" class="filter-chip px-4 py-2 rounded-full text-sm font-semibold transition-all border-2">
+                ♂ Macho
+              </button>
+              <button onclick="filtrarAnimales('sexo', 'hembra')" class="filter-chip px-4 py-2 rounded-full text-sm font-semibold transition-all border-2">
+                ♀ Hembra
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <span class="text-xs text-slate-400 uppercase tracking-widest font-semibold">Tamaño</span>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="filtrarAnimales('tamano', null)" class="filter-chip filter-active px-4 py-2 rounded-full text-sm font-semibold transition-all border-2">
+                Todos
+              </button>
+              <button onclick="filtrarAnimales('tamano', 'pequeño')" class="filter-chip px-4 py-2 rounded-full text-sm font-semibold transition-all border-2">
+                Pequeño
+              </button>
+              <button onclick="filtrarAnimales('tamano', 'mediano')" class="filter-chip px-4 py-2 rounded-full text-sm font-semibold transition-all border-2">
+                Mediano
+              </button>
+              <button onclick="filtrarAnimales('tamano', 'grande')" class="filter-chip px-4 py-2 rounded-full text-sm font-semibold transition-all border-2">
+                Grande
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div id="animales-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -166,6 +198,23 @@
     </div>
   </footer>
 
+  <style>
+    .filter-chip {
+      background-color: white;
+      color: #64748b;
+      border-color: #e2e8f0;
+    }
+    .filter-chip:hover {
+      border-color: #84cc16;
+      color: #84cc16;
+    }
+    .filter-chip.filter-active {
+      background-color: #84cc16;
+      color: white;
+      border-color: #84cc16;
+    }
+  </style>
+
   <script src="js/animals.js"></script>
   <script>
     const toggleButton = document.getElementById('menu-toggle');
@@ -178,9 +227,79 @@
       menuIcon?.classList.toggle('fa-times');
     });
 
+    // Variables para los filtros
+    let filtroSexo = null;
+    let filtroTamano = null;
+    let todosLosAnimales = [];
+
+    // Función para filtrar animales
+    function filtrarAnimales(tipo, valor) {
+      if (tipo === 'sexo') {
+        filtroSexo = valor;
+        // Actualizar estilos de los chips de sexo
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+          const text = chip.textContent.toLowerCase();
+          if (chip.parentElement.previousElementSibling?.textContent.toLowerCase().includes('sexo')) {
+            if ((valor === null && text.includes('todos')) ||
+                (valor && text.includes(valor))) {
+              chip.classList.add('filter-active');
+            } else {
+              chip.classList.remove('filter-active');
+            }
+          }
+        });
+      } else if (tipo === 'tamano') {
+        filtroTamano = valor;
+        // Actualizar estilos de los chips de tamaño
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+          const text = chip.textContent.toLowerCase();
+          if (chip.parentElement.previousElementSibling?.textContent.toLowerCase().includes('tamaño')) {
+            if ((valor === null && text.includes('todos')) ||
+                (valor && text.includes(valor))) {
+              chip.classList.add('filter-active');
+            } else {
+              chip.classList.remove('filter-active');
+            }
+          }
+        });
+      }
+
+      // Aplicar filtros
+      let animalesFiltrados = todosLosAnimales;
+
+      if (filtroSexo) {
+        animalesFiltrados = animalesFiltrados.filter(a => a.sexo === filtroSexo);
+      }
+
+      if (filtroTamano) {
+        animalesFiltrados = animalesFiltrados.filter(a => a.tamano === filtroTamano);
+      }
+
+      // Renderizar
+      const contenedor = document.getElementById('animales-grid');
+      if (animalesFiltrados.length === 0) {
+        contenedor.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-slate-500 text-lg">No hay animales que coincidan con los filtros seleccionados.</p></div>';
+      } else {
+        contenedor.innerHTML = animalesFiltrados.map(animal => crearCardAnimal(animal)).join('');
+      }
+    }
+
     // Cargar perros cuando la página cargue
-    document.addEventListener('DOMContentLoaded', () => {
-      cargarAnimales('perro', false);
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('data/animals.json');
+        const data = await response.json();
+        todosLosAnimales = data.animales.filter(a => a.tipo === 'perro' && !a.finales_felices);
+
+        const contenedor = document.getElementById('animales-grid');
+        if (todosLosAnimales.length === 0) {
+          contenedor.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-slate-500 text-lg">No hay perros disponibles en este momento.</p></div>';
+        } else {
+          contenedor.innerHTML = todosLosAnimales.map(animal => crearCardAnimal(animal)).join('');
+        }
+      } catch (error) {
+        console.error('Error cargando animales:', error);
+      }
     });
 
     document.getElementById('current-year').textContent = new Date().getFullYear();
