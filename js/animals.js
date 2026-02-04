@@ -64,7 +64,7 @@ function crearCardAnimal(animal) {
   const tamanoLabel = animal.tamano ? animal.tamano.charAt(0).toUpperCase() + animal.tamano.slice(1) : '';
 
   return `
-    <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all">
+    <a href="animal.html?id=${animal.id}" class="block group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer">
       <div class="h-64 overflow-hidden relative">
         <img src="${fotoPrincipal}" alt="${animal.nombre}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=800'" />
         <div class="absolute top-4 left-4 flex gap-2">
@@ -75,7 +75,6 @@ function crearCardAnimal(animal) {
             ${tamanoLabel}
           </span>` : ''}
         </div>
-        ${animal.finales_felices ? '<div class="absolute top-4 right-4"><span class="px-3 py-1 bg-lime-500 backdrop-blur rounded-full text-xs font-bold text-white uppercase">Adoptado</span></div>' : ''}
       </div>
       <div class="p-6">
         <div class="flex justify-between items-center mb-2">
@@ -83,11 +82,11 @@ function crearCardAnimal(animal) {
           <span class="text-lime-600 font-medium">${edad}</span>
         </div>
         <p class="text-slate-500 mb-6 italic">"${animal.descripcion}"</p>
-        <a href="animal.html?id=${animal.id}" class="block w-full text-center py-3 bg-slate-50 hover:bg-lime-600 hover:text-white rounded-xl font-bold transition-all">
+        <div class="block w-full text-center py-3 bg-slate-50 group-hover:bg-lime-600 group-hover:text-white rounded-xl font-bold transition-all">
           Ver más
-        </a>
+        </div>
       </div>
-    </div>
+    </a>
   `;
 }
 
@@ -167,8 +166,8 @@ async function cargarAnimalIndividual() {
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Galería de fotos -->
             <div>
-              <div class="bg-white rounded-2xl overflow-hidden shadow-lg mb-4">
-                <img id="foto-principal" src="${fotos[0]}" alt="${animal.nombre}" class="w-full h-96 object-cover" />
+              <div class="bg-white rounded-2xl overflow-hidden shadow-lg mb-4 cursor-pointer" onclick="abrirModal(0)">
+                <img id="foto-principal" src="${fotos[0]}" alt="${animal.nombre}" class="w-full h-96 object-cover hover:opacity-90 transition-opacity" />
               </div>
               ${fotos.length > 1 ? `
                 <div class="grid grid-cols-4 gap-2">
