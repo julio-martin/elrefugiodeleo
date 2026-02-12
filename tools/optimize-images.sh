@@ -12,8 +12,11 @@ command -v jpegoptim >/dev/null 2>&1 || { echo "❌ Falta jpegoptim"; exit 1; }
 #  - 75-78 = más compresión (puede notarse en algunas fotos)
 JPEG_MAX_QUALITY=82
 
+# Umbral mínimo de mejora para aplicar el cambio (porcentaje)
+MIN_IMPROVEMENT_PCT=5
+
 echo "Optimizando JPG/JPEG en: $ROOT"
-echo "Calidad máx: $JPEG_MAX_QUALITY"
+echo "Calidad máx: $JPEG_MAX_QUALITY | Mejora mínima: ${MIN_IMPROVEMENT_PCT}%"
 echo
 
 find "$ROOT" -type f \( -iname "*.jpg" -o -iname "*.jpeg" \) -print0 |
@@ -23,8 +26,6 @@ while IFS= read -r -d '' f; do
   tmp="$(mktemp -t jpgopt_XXXXXX).jpg"
 
   # 1) Normaliza rotación, elimina metadata, y re-encode sin cambiar tamaño
-  #    -sampling-factor 4:2:0: buena compresión para fotos
-  #    -interlace Plane: JPEG progresivo (carga más rápida percibida)
   magick "$f" \
     -auto-orient \
     -strip \
@@ -33,22 +34,27 @@ while IFS= read -r -d '' f; do
     -interlace Plane \
     "$tmp"
 
-  mv "$tmp" "$f"
+  # 2) Optimiza aún más (tablas Huffman, etc.) sobre el archivo temporal
+  jpegoptim --strip-all --all-progressive --max="$JPEG_MAX_QUALITY" "$tmp" >/dev/null
 
-  # 2) Optimiza aún más (Huffman tables, etc.) manteniendo calidad <= max
-  jpegoptim --strip-all --all-progressive --max="$JPEG_MAX_QUALITY" "$f" >/dev/null
-
-  after=$(wc -c < "$f" | tr -d ' ')
+  after=$(wc -c < "$tmp" | tr -d ' ')
   saved=$((before - after))
 
-  if [ "$saved" -gt 0 ]; then
+  # Calcula % ahorro (entero). Evita división por 0.
+  if [ "$before" -gt 0 ] && [ "$saved" -gt 0 ]; then
     pct=$(( (saved * 100) / before ))
+  else
+    pct=0
+  fi
+
+  if [ "$pct" -ge "$MIN_IMPROVEMENT_PCT" ]; then
+    mv "$tmp" "$f"
     echo "✅ $f  (${before} -> ${after} bytes, -${pct}%)"
   else
-    echo "➖ $f  (${before} -> ${after} bytes)"
+    rm -f "$tmp"
+    echo "➖ $f  (mejora -${pct}% < ${MIN_IMPROVEMENT_PCT}%; no se toca)"
   fi
 done
 
 echo
-echo "🎉 Listo. No se han cambiado rutas, nombres ni dimensiones."
-
+echo "🎉 Listo. Solo se reemplazaron imágenes con mejora >= ${MIN_IMPROVEMENT_PCT}%."
