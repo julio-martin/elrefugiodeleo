@@ -25,6 +25,17 @@
     }
   </script>
 
+  <!-- No dejar usar parametros que venían de wordpress-->
+  <script>
+    if (window.location.search.length > 0) {
+      const meta = document.createElement('meta');
+      meta.name = "robots";
+      meta.content = "noindex, follow";
+      document.head.appendChild(meta);
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  </script>
+  
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
