@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="KU-xa4EqOStj6MGseAYmrjnwGi5irbi4e6BSh2p2AAM" />
-  <title>El Refugio de Leo</title>
-
+  <title>El Refugio de Leo | Refugio de animales en la Axarquía y Vélez-Málaga</title>
+  <meta name="description" content="El Refugio de Leo es una protectora de animales en la Axarquía y Vélez-Málaga. Rescatamos perros y gatos abandonados y les buscamos un hogar mediante adopción, acogida y colaboración." />
+  
   <!-- Meta tags para redes sociales -->
   <meta property="og:title" content="Refugio de Animales en la Axarquía y Vélez-Málaga | El Refugio de Leo" />
   <meta property="og:description" content="Asociación protectora de animales abandonados en la Axarquía (Vélez-Málaga). Rescatamos, cuidamos y buscamos hogares para perros y gatos. Colabora, adopta o apadrina." />
@@ -16,6 +17,8 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/logo.png" />
 
+  <link rel="canonical" href="https://www.elrefugiodeleo.com/" />
+
   <!-- Redirección para limpiar index.html de la URL -->
   <script>
     if (window.location.pathname === '/index.html') {
@@ -23,6 +26,17 @@
     }
   </script>
 
+  <!-- No dejar usar parametros que venían de wordpress-->
+  <script>
+    if (window.location.search.length > 0) {
+      const meta = document.createElement('meta');
+      meta.name = "robots";
+      meta.content = "noindex, follow";
+      document.head.appendChild(meta);
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  </script>
+  
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -134,10 +148,10 @@
               el Refugio de Leo
             </span>
             <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Animales en la <span class="text-lime-400">Axarquía</span>.
+              Refugio de Animales en la <span class="text-lime-400">Axarquía y Vélez-Málaga</span>.
             </h1>
             <p class="text-xl md:text-2xl mb-10 text-slate-200 font-light leading-relaxed">
-              El Refugio de Leo es una asociación protectora de animales ubicada en la comarca de la Axarquía (Andalucía). Rescatamos perros y gatos abandonados y maltratados hasta encontrarles un hogar definitivo. Funciona gracias a voluntarios, socios, apadrinamientos y donaciones.
+              El Refugio de Leo es una asociación protectora de animales ubicada en la comarca de la Axarquía, Vélez-Málaga (Andalucía). Rescatamos perros y gatos abandonados y maltratados hasta encontrarles un hogar definitivo. Funciona gracias a voluntarios, socios, apadrinamientos y donaciones.
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
               <a
