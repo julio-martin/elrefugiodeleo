@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="../assets/animales"
+ROOT="$1"
 
 command -v magick >/dev/null 2>&1 || { echo "❌ Falta ImageMagick (magick)"; exit 1; }
 command -v jpegoptim >/dev/null 2>&1 || { echo "❌ Falta jpegoptim"; exit 1; }
